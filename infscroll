@@ -1,0 +1,43 @@
+<head>
+<script>
+  	var nexti=0;
+	var lastpos=0;
+	var lasttop=0;
+	var h=150;
+	var ih = window.innerHeight;
+	var n = 10*window.innerHeight/h
+	var lastbottom=n*150;
+
+    var elements = [];
+  function onscroll() {
+    console.log(window.scrollY);
+	console.log(document.body.scrollHeight);
+	if (window.scrollY > lastbottom - ih*3) {
+	  e=elements[nexti]
+	  e.style.top=lastbottom;
+	  lasttop = lasttop + h;
+	  nexti=nexti+1;
+	  if (nexti>=n) nexti=0;
+	  lastpos=lastpos+h;
+	  lastbottom=lastbottom+h;
+	}
+  }
+</script>
+</head>
+<body onscroll="onscroll()">
+<script>
+    // 10 windows
+    for (i=0; i<n; i++) {
+	  var m = document.createElement('img');
+	  elements.push(m);
+	m.src = "https://www.google.hu/images/srpr/logo11w.png";
+	m.height=150;
+	m.left=0;
+	m.style.position='absolute'
+	m.style.top=i*150;
+	document.getElementsByTagName('body')[0].appendChild(m);
+	}
+</script>
+
+
+</body>
